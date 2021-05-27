@@ -20,7 +20,7 @@ function resetGame(text) {
 
 function humanTurn(level) {
   tileContainer.classList.remove('unclickable');
-  info.textContent = `Your turn: ${level} Tap${level > 1 ? 's' : ''}`;
+  info.textContent = `Tu Turno: ${level} Tap${level > 1 ? 's' : ''}`;
 }
 
 function activateTile(color) {
@@ -54,7 +54,7 @@ function nextRound() {
   level += 1;
 
   tileContainer.classList.add('unclickable');
-  info.textContent = 'Wait for the computer';
+  info.textContent = 'Esperando al ordenador';
   heading.textContent = `Level ${level} of 20`;
 
 
@@ -76,25 +76,25 @@ function handleClick(tile) {
   const remainingTaps = sequence.length - humanSequence.length;
 
   if (humanSequence[index] !== sequence[index]) {
-    resetGame('Oops! Game over, you pressed the wrong tile');
+    resetGame('Oops! Game over, te has confundido con la secuencia');
     return;
   }
 
   if (humanSequence.length === sequence.length) {
     if (humanSequence.length === 20) {
-      resetGame('Congrats! You completed all the levels');
+      resetGame('Enhorabuena. Has completado todos los niveles');
       return
     }
 
     humanSequence = [];
-    info.textContent = 'Success! Keep going!';
+    info.textContent = 'Muy bien. Sigue así';
     setTimeout(() => {
       nextRound();
     }, 1000);
     return;
   }
 
-  info.textContent = `Your turn: ${remainingTaps} Tap${
+  info.textContent = `Tu turno: ${remainingTaps} Tap${
     remainingTaps > 1 ? 's' : ''
   }`;
 }
@@ -102,7 +102,7 @@ function handleClick(tile) {
 function startGame() {
   startButton.classList.add('hidden');
   info.classList.remove('hidden');
-  info.textContent = 'Wait for the computer';
+  info.textContent = 'Esperando al ordenador';
   nextRound();
 }
 
